@@ -8,13 +8,19 @@ export default function Profile() {
                 <Stl.Container>
                     <img src="https://avatars.githubusercontent.com/u/30753246?v=4" alt="Imagem de perfil Eliezer" />
                     <div>
-                        <h1>Eliezer Rodrigues</h1>
-                        <Stl.Wrapper>
-                            <h3> Username: </h3>
-                            <span>eliezer-rodrigues037</span>
-                        </Stl.Wrapper>
+                        <Stl.Name>
+                            <h1>Eliezer Rodrigues</h1>
+                        </Stl.Name>
+                        <Stl.UserName>
+                            <h3>
+                                git - &nbsp;
+                                <a href="https://github.com/eliezer-rodrigues037" target="_blank" rel="noreferrer">
+                                    eliezer-rodrigues037
+                                </a>
+                            </h3>
+                        </Stl.UserName>
                     </div>
-                    <Stl.Wrapper>
+                    <Stl.UserStats>
                         <div>
                             <h4>Followers</h4>
                             <span>5</span>
@@ -27,7 +33,7 @@ export default function Profile() {
                             <h4>Seguindo</h4>
                             <span>5</span>
                         </div>
-                    </Stl.Wrapper>
+                    </Stl.UserStats>
                 </Stl.Container>
             </Stl.Wrapper>
         </>

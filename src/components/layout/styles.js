@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     display: flex;
+    margin-left: 10px;
 `;
 
 export const repoWrapper = styled.div`
