@@ -1,7 +1,10 @@
 import React from "react";
+import useGithub from "../../Hooks/gitHub";
 import * as Stl from "./styles";
 
 export default function Profile() {
+    const { gitState } = useGithub();
+
     return (
         <>
             <Stl.Wrapper>
@@ -9,7 +12,7 @@ export default function Profile() {
                     <img src="https://avatars.githubusercontent.com/u/30753246?v=4" alt="Imagem de perfil Eliezer" />
                     <div>
                         <Stl.Name>
-                            <h1>Eliezer Rodrigues</h1>
+                            <h1>{gitState.user.name}</h1>
                         </Stl.Name>
                         <Stl.UserName>
                             <h3>

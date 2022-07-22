@@ -33,12 +33,15 @@ const Tab = styled(UnstyledTab).attrs({
         font-weight: bold;
         font-size: 1.1em;
         background-color: #606060;
+        outline: none;
     }
 `;
 
 const TabPanel = styled(UnstyledTabPanel).attrs({ selectedClassName: "selected" })`
     display: none;
     padding: 10px 20px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
 
     &.selected {
         display: block;
