@@ -4,6 +4,10 @@ export const Container = styled.div`
     * {
         font-family: Arial, Helvetica, sans-serif;
     }
+
+    body {
+        background-color: #282828;
+    }
 `;
 
 export const GlobalStyle = createGlobalStyle`

@@ -1,5 +1,6 @@
 import React from "react";
 import * as Stl from "./styles";
+import Repositories from "../repositories";
 
 export default function Layout({ children }) {
     return (
@@ -7,9 +8,7 @@ export default function Layout({ children }) {
             <header>Header</header>
             <Stl.Container>
                 <Stl.ContainerColumn>{children}</Stl.ContainerColumn>
-                <Stl.repoWrapper>
-                    <div>Repositories</div>
-                </Stl.repoWrapper>
+                <Repositories />
             </Stl.Container>
         </>
     );

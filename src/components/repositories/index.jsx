@@ -3,11 +3,13 @@ import * as Style from "./styles";
 
 export default function Repositories() {
     return (
-        <Style.TabsContainer selectedTabClassName="is-selected" selectedTabPanelClassName="is-selected">
-            <Style.TabListContainer>
-                <Style.TabContainer>Repositórios</Style.TabContainer>
-                <Style.TabContainer>Favoritos</Style.TabContainer>
-            </Style.TabListContainer>
-        </Style.TabsContainer>
+        <Style.Tabs>
+            <Style.TabList>
+                <Style.Tab>Repositórios</Style.Tab>
+                <Style.Tab>Favoritos</Style.Tab>
+            </Style.TabList>
+            <Style.TabPanel>panel Repositórios</Style.TabPanel>
+            <Style.TabPanel>panel Favoritos</Style.TabPanel>
+        </Style.Tabs>
     );
 }

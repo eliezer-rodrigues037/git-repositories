@@ -7,8 +7,6 @@ function App() {
             <main>
                 <Layout>
                     <Profile />
-                    <div>Repositories</div>
-                    <div>Favoritos</div>
                 </Layout>
             </main>
         </>

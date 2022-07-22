@@ -1,11 +1,55 @@
 import styled from "styled-components";
+import { Tab as UnstyledTab, TabList as UnstyledTabList, Tabs as UnstyledTabs, TabPanel as UnstyledTabPanel } from "react-tabs";
 
-import { Tabs, TabList, Tab, TabPanel } from "react-tabs";
+const Tabs = styled(UnstyledTabs)`
+    width: 80vw;
+    margin: 0 10px;
+`;
 
-export const TabsContainer = styled(Tabs)``;
+const TabList = styled(UnstyledTabList)`
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+`;
 
-export const TabListContainer = styled(TabList)``;
+const Tab = styled(UnstyledTab).attrs({
+    selectedClassName: "selected",
+    disabledClassName: "disabled",
+})`
+    flex-grow: 1;
+    text-align: center;
+    padding: 12px 0;
+    list-style: none;
+    cursor: pointer;
+    color: white;
+    background-color: #404040;
+    border-radius: 15px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    box-shadow: #b3b3b3;
 
-export const TabContainer = styled(Tab)``;
+    &.selected {
+        font-weight: bold;
+        font-size: 1.1em;
+        background-color: #606060;
+    }
+`;
 
-export const TabPanelContainer = styled(TabPanel)``;
+const TabPanel = styled(UnstyledTabPanel).attrs({ selectedClassName: "selected" })`
+    display: none;
+    padding: 10px 20px;
+
+    &.selected {
+        display: block;
+        background-color: #606060;
+        color: white;
+    }
+`;
+
+Tab.tabsRole = "Tab";
+Tabs.tabsRole = "Tabs";
+TabPanel.tabsRole = "TabPanel";
+TabList.tabsRole = "TabList";
+
+export { Tab, TabList, Tabs, TabPanel };
