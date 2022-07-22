@@ -1,6 +1,7 @@
-# Getting Started with Create React App
+# git-repositories
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Projeto criado durante o bootcamp impulso javascript da Digital Inovation One.
+
 
 ## Available Scripts
 
