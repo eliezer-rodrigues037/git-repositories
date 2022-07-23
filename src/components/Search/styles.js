@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     display: flex;
-
     justify-content: space-between;
     min-width: 18vw;
     height: 35px;
@@ -35,4 +34,5 @@ export const Wrapper = styled.p`
     display: flex;
     align-items: center;
     color: red;
+    justify-content: end;
 `;

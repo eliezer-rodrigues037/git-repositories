@@ -1,18 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { GitHubContext } from "../../providers/git";
 import * as Style from "./styles";
+import { BsSearch } from "react-icons/bs";
 
 export default function Search() {
-    const { getUser } = useContext(GitHubContext);
+    const { getUser, gitState } = useContext(GitHubContext);
     const [userInput, setuserInput] = useState("");
-    let found = true;
-    let Texto = "User not Found";
     const submitUser = () => {
-        try {
-            getUser(userInput);
-        } catch (err) {
-            console.log(err);
-        }
+        getUser(userInput.replace(/\s+/g, ""));
     };
 
     const handleChange = (e) => {
@@ -22,13 +17,13 @@ export default function Search() {
     return (
         <>
             <Style.Wrapper>
+                {gitState.notFound ? "Usuário não encontrado." : ""}
                 <Style.Container>
                     <input type="text" placeholder="Git user name" value={userInput} onChange={handleChange} />
                     <button type="button" onClick={submitUser}>
-                        Buscar
+                        <BsSearch />
                     </button>
                 </Style.Container>
-                {!found && Texto}
             </Style.Wrapper>
         </>
     );

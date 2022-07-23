@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { GitHubContext } from "../../providers/git";
 import * as Stl from "./styles";
+import { GoMarkGithub } from "react-icons/go";
 
 export default function Profile() {
     const { gitState } = useContext(GitHubContext);
@@ -16,7 +17,7 @@ export default function Profile() {
                         </Stl.Name>
                         <Stl.UserName>
                             <h3>
-                                git - &nbsp;
+                                <GoMarkGithub /> - &nbsp;
                                 <a href={gitState.user.html_url} target="_blank" rel="noreferrer">
                                     {gitState.user.login}
                                 </a>

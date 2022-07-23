@@ -4,6 +4,11 @@ import { Tab as UnstyledTab, TabList as UnstyledTabList, Tabs as UnstyledTabs, T
 const Tabs = styled(UnstyledTabs)`
     width: 80vw;
     margin: 0 10px;
+
+    @media (max-width: 700px) {
+        width: auto;
+        margin: 10px;
+    }
 `;
 
 const TabList = styled(UnstyledTabList)`

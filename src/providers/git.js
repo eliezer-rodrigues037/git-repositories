@@ -12,6 +12,7 @@ export default function Git({ children }) {
         userLoaded: false,
         reposLoaded: false,
         starrLoaded: false,
+        notFound: false,
         user: {
             login: "",
             name: "",
@@ -52,12 +53,20 @@ export default function Git({ children }) {
                     },
                 }));
             })
-            .catch((err) => console.log("getUser request error:", err))
-            .finally(() => {
+            .then(() => {
                 setGitState((prevGitState) => ({
                     ...prevGitState,
                     userLoaded: true,
+                    notFound: false,
                 }));
+            })
+            .catch(({ response }) => {
+                if (response.status === 404) {
+                    setGitState((prevGitState) => ({
+                        ...prevGitState,
+                        notFound: true,
+                    }));
+                }
             });
     };
 
