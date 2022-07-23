@@ -30,7 +30,7 @@ export const Container = styled.div`
     }
 `;
 
-export const Wrapper = styled.p`
+export const Wrapper = styled.div`
     display: flex;
     align-items: center;
     color: red;

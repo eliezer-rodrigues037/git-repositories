@@ -38,36 +38,40 @@ export default function Git({ children }) {
     }, []);
 
     const getUser = async (userName) => {
-        await Api.get(`/users/${userName}`)
-            .then(({ data }) => {
-                setGitState((prevGitState) => ({
-                    ...prevGitState,
-                    user: {
-                        login: data.login,
-                        name: data.name,
-                        avatar_url: data.avatar_url,
-                        html_url: data.html_url,
-                        followers: data.followers,
-                        following: data.following,
-                        public_repos: data.public_repos,
-                    },
-                }));
-            })
-            .then(() => {
-                setGitState((prevGitState) => ({
-                    ...prevGitState,
-                    userLoaded: true,
-                    notFound: false,
-                }));
-            })
-            .catch(({ response }) => {
-                if (response.status === 404) {
+        try {
+            await Api.get(`/users/${userName}`)
+                .then(({ data }) => {
                     setGitState((prevGitState) => ({
                         ...prevGitState,
-                        notFound: true,
+                        user: {
+                            login: data.login,
+                            name: data.name,
+                            avatar_url: data.avatar_url,
+                            html_url: data.html_url,
+                            followers: data.followers,
+                            following: data.following,
+                            public_repos: data.public_repos,
+                        },
                     }));
-                }
-            });
+                })
+                .then(() => {
+                    setGitState((prevGitState) => ({
+                        ...prevGitState,
+                        userLoaded: true,
+                        notFound: false,
+                    }));
+                })
+                .catch(({ response }) => {
+                    if (response.status === 404) {
+                        setGitState((prevGitState) => ({
+                            ...prevGitState,
+                            notFound: true,
+                        }));
+                    }
+                });
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     const getRepos = async (userLogin) => {

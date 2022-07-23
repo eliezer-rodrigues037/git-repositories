@@ -7,7 +7,8 @@ export default function Repositories() {
     const { getStarred, getRepos, gitState } = useContext(GitHubContext);
 
     useEffect(() => {
-        if (gitState.userLoaded) {
+        if (gitState.userLoaded && (gitState.repositories.length === 0 || gitState.starred.length === 0)) {
+            debugger;
             getRepos(gitState.user.login);
             getStarred(gitState.user.login);
         }
@@ -27,7 +28,7 @@ export default function Repositories() {
                         ))}
                     </>
                 ) : (
-                    <>Carregando</>
+                    <Style.LoadinText>Carregando</Style.LoadinText>
                 )}
             </Style.TabPanel>
             <Style.TabPanel>
@@ -38,7 +39,7 @@ export default function Repositories() {
                         ))}
                     </>
                 ) : (
-                    <>Carregando</>
+                    <Style.LoadinText>Carregando</Style.LoadinText>
                 )}
             </Style.TabPanel>
         </Style.Tabs>

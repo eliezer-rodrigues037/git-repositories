@@ -62,3 +62,8 @@ TabPanel.tabsRole = "TabPanel";
 TabList.tabsRole = "TabList";
 
 export { Tab, TabList, Tabs, TabPanel };
+
+export const LoadinText = styled.div`
+    color: white;
+    font-weight: bold;
+`;
