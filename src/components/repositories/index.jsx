@@ -8,7 +8,6 @@ export default function Repositories() {
 
     useEffect(() => {
         if (gitState.userLoaded && (gitState.repositories.length === 0 || gitState.starred.length === 0)) {
-            debugger;
             getRepos(gitState.user.login);
             getStarred(gitState.user.login);
         }
