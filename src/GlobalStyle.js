@@ -1,17 +1,8 @@
-import styled, { createGlobalStyle } from "styled-components";
-
-export const Container = styled.div`
-    * {
-        font-family: Arial, Helvetica, sans-serif;
-    }
-
-    body {
-        background-color: #282828;
-    }
-`;
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 
+    /* destyle.css :https://github.com/nicolas-cusan/destyle.css  */
     *,
     ::before,
     ::after {
@@ -44,6 +35,8 @@ export const GlobalStyle = createGlobalStyle`
 
     body {
     margin: 0;
+    background-color: #181818;
+    font-family: Arial, Helvetica, sans-serif;
     }
 
 
