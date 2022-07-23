@@ -9,6 +9,8 @@ export const GitHubContext = createContext({
 
 export default function Git({ children }) {
     const [gitState, setGitState] = useState({
+        userLoaded: false,
+        reposLoaded: false,
         user: {
             login: "",
             name: "",
@@ -25,16 +27,16 @@ export default function Git({ children }) {
     const contextValue = {
         gitState,
         getUser: useCallback((userName) => getUser(userName), []),
+        getRepos: useCallback((userLogin) => getRepos(userLogin), []),
     };
 
     useEffect(() => {
         getUser("eliezer-rodrigues037");
     }, []);
 
-    const getUser = (userName) => {
-        Api.get(`/users/${userName}`)
+    const getUser = async (userName) => {
+        await Api.get(`/users/${userName}`)
             .then(({ data }) => {
-                console.dir(data);
                 setGitState((prevGitState) => ({
                     ...prevGitState,
                     user: {
@@ -48,7 +50,29 @@ export default function Git({ children }) {
                     },
                 }));
             })
-            .catch((err) => console.log("here?", err));
+            .catch((err) => console.log("getUser request error:", err))
+            .finally(() => {
+                setGitState((prevGitState) => ({
+                    ...prevGitState,
+                    userLoaded: true,
+                }));
+            });
+    };
+
+    const getRepos = async (userLogin) => {
+        await Api.get(`/users/${userLogin}/repos`)
+            .then(({ data }) => {
+                setGitState((prevState) => ({
+                    ...prevState,
+                    repositories: data,
+                }));
+            })
+            .finally(() => {
+                setGitState((prevGitState) => ({
+                    ...prevGitState,
+                    reposLoaded: true,
+                }));
+            });
     };
 
     return <GitHubContext.Provider value={contextValue}>{children}</GitHubContext.Provider>;
