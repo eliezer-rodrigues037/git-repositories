@@ -11,6 +11,7 @@ export default function Git({ children }) {
     const [gitState, setGitState] = useState({
         userLoaded: false,
         reposLoaded: false,
+        starrLoaded: false,
         user: {
             login: "",
             name: "",
@@ -28,6 +29,7 @@ export default function Git({ children }) {
         gitState,
         getUser: useCallback((userName) => getUser(userName), []),
         getRepos: useCallback((userLogin) => getRepos(userLogin), []),
+        getStarred: useCallback((userLogin) => getStarred(userLogin), []),
     };
 
     useEffect(() => {
@@ -71,6 +73,22 @@ export default function Git({ children }) {
                 setGitState((prevGitState) => ({
                     ...prevGitState,
                     reposLoaded: true,
+                }));
+            });
+    };
+
+    const getStarred = async (userLogin) => {
+        await Api.get(`https://api.github.com/users/${userLogin}/starred`)
+            .then(({ data }) => {
+                setGitState((prevState) => ({
+                    ...prevState,
+                    starred: data,
+                }));
+            })
+            .finally(() => {
+                setGitState((prevState) => ({
+                    ...prevState,
+                    starrLoaded: true,
                 }));
             });
     };

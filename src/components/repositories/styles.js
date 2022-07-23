@@ -42,6 +42,7 @@ const TabPanel = styled(UnstyledTabPanel).attrs({ selectedClassName: "selected" 
     padding: 10px 20px;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
+    margin-bottom: 15px;
 
     &.selected {
         display: block;

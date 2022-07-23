@@ -11,6 +11,7 @@ export const Container = styled.div`
 
     a {
         text-decoration: underline;
+        width: fit-content;
     }
 
     a:hover {
